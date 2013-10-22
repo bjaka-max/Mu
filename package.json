@@ -1,14 +1,14 @@
-{ "name": "mu2"
-, "description": "A Mustache template engine for Node.js"
+{ "name": "muws"
+, "description": "A Mustache template engine with slots for Node.js"
 , "keywords": ["template", "mustache"]
-, "version" : "0.5.19"
-, "homepage": "http://github.com/raycmorgan/mu"
-, "author" : "RayMorgan <ray@rumgr.com>"
+, "version" : "0.5.20"
+, "homepage": "https://github.com/bjaka-max/MuwS"
+, "author" : "Maxim Pashkov <bjaka.max@gmail.com>"
 , "main" : "lib/mu",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.github.com/raycmorgan/Mu/master/LICENSE"
+      "url": "https://github.com/bjaka-max/MuwS/master/LICENSE"
     }
   ]
 }

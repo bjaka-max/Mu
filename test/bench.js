@@ -22,7 +22,7 @@ mu.compile('complex.html', function (err, compiled) {
   //  .on('data', function (c) { buffer += c.toString(); })
   //  .on('end', function () { console.log(buffer); });
   
-  pump(mu.render('complex.html', js), process.stdout);
+  process.stdout.pipe(mu.render('complex.html', js));
 
   var i = 0, d = new Date();
   
