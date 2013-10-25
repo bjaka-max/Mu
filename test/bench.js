@@ -17,11 +17,6 @@ mu.compile('complex.html', function (err, compiled) {
     throw err;
   }
   
-  //var buffer = '';
-  //mu.render('complex.html', js)
-  //  .on('data', function (c) { buffer += c.toString(); })
-  //  .on('end', function () { console.log(buffer); });
-  
   process.stdout.pipe(mu.render('complex.html', js));
 
   var i = 0, d = new Date();
