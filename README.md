@@ -2,7 +2,7 @@
 
 ## About slots
 
-If your a use Mustache for generating html, your are must use construction like this:
+If your a use Mustache for generating html, your are mast use construction like this:
 
 ###template.mustashe:
 ```text
