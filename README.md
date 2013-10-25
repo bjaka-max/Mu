@@ -1,23 +1,17 @@
 # Mu - a fast, streaming Node.js Mustache engine
 
-Warning: This version is not API compatible with 0.1.
-
 ## Install
 
 I have had some issues with my npm auth and got it in a bit of a rut, so for
 now you have to:
 
-    npm install mu2
-
-## Issues
-
-Currently mu does not support changing the tag form ({{ }} to say <% %>).
+    npm install muws
 
 ## Usage
 
 There are a few ways to use mu 0.5. Here is the simplest:
 ```javascript
-var mu = require('mu2'); // notice the "2" which matches the npm repo, sorry..
+var mu = require('muws');
 
 mu.root = __dirname + '/templates'
 mu.compileAndRender('index.html', {name: "john"})
@@ -29,7 +23,7 @@ Here is an example mixing it with the http module:
 ```javascript
 var http = require('http')
   , util = require('util')
-  , mu   = require('mu2');
+  , mu   = require('muws');
 
 mu.root = __dirname + '/templates';
 
@@ -45,7 +39,7 @@ in development mode (so the changes are immediately reflected).
 ```javascript
 var http = require('http')
   , util = require('util')
-  , mu   = require('mu2');
+  , mu   = require('muws');
 
 mu.root = __dirname + '/templates';
 
