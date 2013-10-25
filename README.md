@@ -6,9 +6,9 @@ If your a use Mustache for generating html, your are must use construction like 
 
 ###template.mustashe:
 ```text
-{{<header}}{{!include html before content}}
+{{>header}}{{!include html before content}}
 content text
-{{<footer}}{{!include html after content}}
+{{>footer}}{{!include html after content}}
 ```
 ###header.mustashe:
 ```html
