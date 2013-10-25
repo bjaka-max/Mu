@@ -4,41 +4,40 @@
 
 If your a use Mustache for generating html, your are must use construction like this:
 
-template.mustashe
+###template.mustashe:
 ```text
-{{<header}}
+{{<header}}{{!include html before content}}
 content text
-{{<footer}}
+{{<footer}}{{!include html after content}}
 ```
-header.mustashe
+###header.mustashe:
 ```html
 <html>
     <head>
     </head>
     <body>
 ```
-footer.mustashe
+###footer.mustashe:
 ```html
     </body>
 </html>
 ```
 It is ugly, and split tags. I suggest use the slot mechanism.
-template.mustashe
-```html
-{{!include parent template}}
-{{@parent}}
-{{!fill content slot}}
-{{[conent}}content text{{/conent}}
+
+
+###template.mustashe:
+```text
+{{@parent}}{{!include parent template}}
+{{[conent}}content text{{/conent}}{{!fill content slot}}
 {{/parent}}
 ```
-parent.mustashe
+###parent.mustashe:
 ```html
 <html>
     <head>
     </head>
     <body>
-    {{!define content slot}}
-    {{]conent}}default content{{/conent}}
+    {{]conent}}default content{{/conent}}{{!define content slot}}
     </body>
 </html>
 ```
