@@ -3,8 +3,9 @@
 ## About slots
 
 If your a use Mustache for generating html, your are must use construction like this:
+
 template.mustashe
-```html
+```text
 {{<header}}
 content text
 {{<footer}}
@@ -16,7 +17,7 @@ header.mustashe
     </head>
     <body>
 ```
-header.mustashe
+footer.mustashe
 ```html
     </body>
 </html>
