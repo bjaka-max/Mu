@@ -1,4 +1,46 @@
-# Mu - a fast, streaming Node.js Mustache engine
+# Mu - a fast, streaming Node.js Mustache engine (with slots)
+
+## About slots
+
+If your a use Mustache for generating html, your are must use construction like this:
+template.mustashe
+```html
+{{<header}}
+content text
+{{<footer}}
+```
+header.mustashe
+```html
+<html>
+    <head>
+    </head>
+    <body>
+```
+header.mustashe
+```html
+    </body>
+</html>
+```
+It is ugly, and split tags. I suggest use the slot mechanism.
+template.mustashe
+```html
+{{!include parent template}}
+{{@parent}}
+{{!fill content slot}}
+{{[conent}}content text{{/conent}}
+{{/parent}}
+```
+parent.mustashe
+```html
+<html>
+    <head>
+    </head>
+    <body>
+    {{!define content slot}}
+    {{]conent}}default content{{/conent}}
+    </body>
+</html>
+```
 
 ## Install
 
