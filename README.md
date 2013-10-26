@@ -2,7 +2,7 @@
 
 ## About slots
 
-If your a use Mustache for generating html, your are mast use construction like this:
+If your a use Mustache for generating html, your are must use construction like this:
 
 ###template.mustashe:
 ```text
@@ -72,7 +72,7 @@ mu.root = __dirname + '/templates';
   http.createServer(function (req, res) {
 
   var stream = mu.compileAndRender('index.html', {name: "john"});
-  util.pump(stream, res);
+  stream.pipe(res);
 
 }).listen(8000);
 ```
@@ -92,7 +92,7 @@ http.createServer(function (req, res) {
   }
 
   var stream = mu.compileAndRender('index.html', {name: "john"});
-  util.pump(stream, res);
+  stream.pipe(res);
 
 }).listen(8000);
 ```
