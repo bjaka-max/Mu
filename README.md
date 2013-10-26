@@ -97,7 +97,7 @@ http.createServer(function (req, res) {
 }).listen(8000);
 ```
 
-## Usage in (http://expressjs.com/ "express")
+## Usage in express (http://expressjs.com/)
 
 ###start.js:
 ```javascript
@@ -110,7 +110,7 @@ app.get('/', function(req, res){
     res.render('index.mustache', {text:'Hello World'});
 });
 
-app.listen(3000);
+app.listen(8000);
 ```
 ###views/index.mustashe:
 ```html
