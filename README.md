@@ -96,6 +96,33 @@ http.createServer(function (req, res) {
 
 }).listen(8000);
 ```
+
+## Usage in (http://expressjs.com/ "express")
+
+###start.js:
+```javascript
+var express = require('express');
+var app = express();
+var mu   = require('muws');
+app.engine('mustache', mu.__express);
+
+app.get('/', function(req, res){
+    res.render('index.mustache', {text:'Hello World'});
+});
+
+app.listen(3000);
+```
+###views/index.mustashe:
+```html
+<html>
+    <head>
+    </head>
+    <body>
+    {{text}}
+    </body>
+</html>
+```
+
 ## API
 
     mu.root
