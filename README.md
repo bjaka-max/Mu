@@ -1,4 +1,4 @@
-# Mu - a fast, streaming Node.js Mustache engine (with slots)
+# MuwS - a fast, streaming Node.js Mustache engine (with slots)
 
 ## About slots
 
