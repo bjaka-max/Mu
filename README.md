@@ -44,9 +44,6 @@ It is ugly, and split tags. I suggest use the slot mechanism.
 
 ## Install
 
-I have had some issues with my npm auth and got it in a bit of a rut, so for
-now you have to:
-
     npm install muws
 
 ## Usage
