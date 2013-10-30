@@ -82,5 +82,6 @@ process.on('exit', function() {
     console.log('All done.');
   } else {
     console.log('Failed \033[31m', failedTests, '\033[37m');
+    process.exit(1);
   }
 });
