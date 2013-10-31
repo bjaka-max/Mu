@@ -1,8 +1,5 @@
 # MuwS - a fast, streaming Node.js Mustache engine (with slots)
 [![Build Status](https://travis-ci.org/joelbyler/MuwS.png?branch=master)](https://travis-ci.org/joelbyler/MuwS)
-```text
-Note to bjaka-max, you'll want to change the above build status indicator to point to your repository instead of mine (joelbyler)
-```
 
 ## About slots
 
