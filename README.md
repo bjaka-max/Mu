@@ -29,7 +29,7 @@ It is ugly, and split tags. I suggest use the slot mechanism.
 ###template.mustashe:
 ```text
 {{@parent}}{{!include parent template}}
-{{[conent}}content text{{/conent}}{{!fill content slot}}
+{{[content}}content text{{/content}}{{!fill content slot}}
 {{/parent}}
 ```
 ###parent.mustashe:
@@ -38,7 +38,7 @@ It is ugly, and split tags. I suggest use the slot mechanism.
     <head>
     </head>
     <body>
-    {{]conent}}default content{{/conent}}{{!define content slot}}
+    {{]content}}default content{{/content}}{{!define content slot}}
     </body>
 </html>
 ```
