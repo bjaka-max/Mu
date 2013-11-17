@@ -1,8 +1,9 @@
-# Mu - a fast, streaming Node.js Mustache engine (with slots)
+# MuwS - a fast, streaming Node.js Mustache engine (with slots)
+[![Build Status](https://travis-ci.org/joelbyler/MuwS.png?branch=master)](https://travis-ci.org/joelbyler/MuwS)
 
 ## About slots
 
-If your a use Mustache for generating html, your are mast use construction like this:
+If your a use Mustache for generating html, your are must use construction like this:
 
 ###template.mustashe:
 ```text
@@ -28,7 +29,7 @@ It is ugly, and split tags. I suggest use the slot mechanism.
 ###template.mustashe:
 ```text
 {{@parent}}{{!include parent template}}
-{{[conent}}content text{{/conent}}{{!fill content slot}}
+{{[content}}content text{{/content}}{{!fill content slot}}
 {{/parent}}
 ```
 ###parent.mustashe:
@@ -37,15 +38,12 @@ It is ugly, and split tags. I suggest use the slot mechanism.
     <head>
     </head>
     <body>
-    {{]conent}}default content{{/conent}}{{!define content slot}}
+    {{]content}}default content{{/content}}{{!define content slot}}
     </body>
 </html>
 ```
 
 ## Install
-
-I have had some issues with my npm auth and got it in a bit of a rut, so for
-now you have to:
 
     npm install muws
 
@@ -72,7 +70,7 @@ mu.root = __dirname + '/templates';
   http.createServer(function (req, res) {
 
   var stream = mu.compileAndRender('index.html', {name: "john"});
-  util.pump(stream, res);
+  stream.pipe(res);
 
 }).listen(8000);
 ```
@@ -92,12 +90,12 @@ http.createServer(function (req, res) {
   }
 
   var stream = mu.compileAndRender('index.html', {name: "john"});
-  util.pump(stream, res);
+  stream.pipe(res);
 
 }).listen(8000);
 ```
 
-## Usage in (http://expressjs.com/ "express")
+## Usage in express (http://expressjs.com/)
 
 ###start.js:
 ```javascript
@@ -110,7 +108,7 @@ app.get('/', function(req, res){
     res.render('index.mustache', {text:'Hello World'});
 });
 
-app.listen(3000);
+app.listen(8000);
 ```
 ###views/index.mustashe:
 ```html
