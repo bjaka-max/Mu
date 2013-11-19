@@ -1,5 +1,5 @@
 # MuwS - a fast, streaming Node.js Mustache engine (with slots)
-[![Build Status](https://travis-ci.org/joelbyler/MuwS.png?branch=master)](https://travis-ci.org/joelbyler/MuwS)
+[![Build Status](https://travis-ci.org/bjaka-max/MuwS.png?branch=master)](https://travis-ci.org/bjaka-max/MuwS)
 
 ## About slots
 
