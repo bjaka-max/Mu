@@ -3,11 +3,6 @@ var fs     = require('fs'),
     mu     = require('../lib/mu'),
     pump   = require('util').pump;
 
-require('nodetime').profile({
-    accountKey: 'e71ac6593a98f8d405d61ba6f21aaa65dfd4ca67', 
-    appName: 'muws'
-});
-
 mu.root = path.join(__dirname, 'examples');
 
 var js   = fs.readFileSync(path.join(mu.root, 'complex.js')).toString(),
