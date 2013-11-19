@@ -1,7 +1,7 @@
 { "name": "muws"
 , "description": "A Mustache template engine with slots for Node.js"
 , "keywords": ["template", "mustache"]
-, "version" : "0.5.23"
+, "version" : "0.5.24"
 , "homepage": "https://github.com/bjaka-max/MuwS"
 , "author" : "Maxim Pashkov <bjaka.max@gmail.com>"
 , "main" : "lib/mu",
