@@ -127,6 +127,9 @@ app.listen(8000);
 
       A path to lookup templates from. Defaults to the working directory.
 
+    mu.globals
+
+      A object. Fields from this object will use in each view in application.
 
     mu.compileAndRender(String templateName, Object view)
 

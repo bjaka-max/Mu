@@ -1,11 +1,15 @@
 { "name": "muws"
 , "description": "A Mustache template engine with slots for Node.js"
 , "keywords": ["template", "mustache"]
-, "version" : "0.5.24"
+, "version" : "0.5.26"
 , "homepage": "https://github.com/bjaka-max/MuwS"
 , "author" : "Maxim Pashkov <bjaka.max@gmail.com>"
-, "main" : "lib/mu",
-  "licenses": [
+, "main" : "lib/mu"
+, "repository": {
+    "type": "git",
+    "url": "https://github.com/bjaka-max/MuwS.git"
+  }
+, "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/bjaka-max/MuwS/master/LICENSE"
