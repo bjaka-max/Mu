@@ -7,15 +7,56 @@ mu.root = path.join(__dirname, 'examples');
 
 var testing = {};
 
-if(!process.argv[2]) {
-  fs.readdir(mu.root, function(err, files) {
-    var testsList = prepareTestsList(files);
-    startAllTests(testsList);
-  });
-} else {
-  var testsList = prepareTestsList([process.argv[2], process.argv[3], process.argv[4]]);
-  startAllTests(testsList);
+function testAsync(template, view, rightResult, name, fn) {
+  console.log("Testing: "+name);
+  testing[name] = true;
+  var buffer = '';
+
+  mu.renderText(template, view)
+    .on('data', function (c) { buffer += c.toString(); })
+    .on('end', function () {
+      if(buffer!==rightResult) {
+        console.log(name+'\033[31m[failed]\033[37m'+JSON.stringify(buffer)+'!=='+JSON.stringify(rightResult));
+      } else if(testing[name]) {
+        delete(testing[name]);
+        console.log(name + ' \033[32m[passed]\033[37m');
+      } else {
+        testing[name] = false;
+        console.log(name + '\033[31m[twice end]\033[37m');
+      }
+      fn();
+    });
 }
+
+function testGlobals(fn) {
+  mu.globals = {test1: true};
+  testAsync('{{#test1}}ok1{{/test1}} {{#test2}}ok2{{/test2}} {{#test3}}ok3{{/test3}}', {test2: true}, 'ok1 ok2 ', 'globals', function() {
+    mu.globals = {};
+    fn();
+  });
+}
+
+function testArrayInView(fn) {
+  mu.globals = {test1: true};
+  testAsync('{{#test1}}ok1{{/test1}} {{#test2}}ok2{{/test2}} {{#test3}}ok3{{/test3}}', [{test2: true}, {test3: true}], 'ok1 ok2 ok3', 'array_in_view', function() {
+    mu.globals = {};
+    fn();
+  });
+}
+
+testGlobals(function() {
+  testArrayInView(function() {
+    if(!process.argv[2]) {
+      fs.readdir(mu.root, function(err, files) {
+        var testsList = prepareTestsList(files);
+        startAllTests(testsList);
+      });
+    } else {
+      var testsList = prepareTestsList([process.argv[2], process.argv[3], process.argv[4]]);
+      startAllTests(testsList);
+    }
+  });
+});
 
 function prepareTestsList(fileList) {
   var testsList = [];
@@ -67,6 +108,7 @@ function startAllTests(testsList) {
           delete(testing[name]);
           console.log(name + ' \033[32m[passed]\033[37m');
         } else {
+          testing[name] = false;
           console.log(name + '\033[31m[twice end]\033[37m');
         }
       });
