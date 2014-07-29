@@ -171,6 +171,11 @@ app.listen(8000);
       This function is responsible for transforming the compiled template into the
       proper output give the input view data.
 
+    mu.renderSync(Mixed filenameOrCompiledTemplate, Object view)
+
+      Returns rendered string
+
+      Synchronous version of mu.render.
 
     mu.renderText(String template, Object view, Object partials)
 

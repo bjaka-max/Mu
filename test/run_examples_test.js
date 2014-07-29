@@ -49,11 +49,15 @@ testGlobals(function() {
     if(!process.argv[2]) {
       fs.readdir(mu.root, function(err, files) {
         var testsList = prepareTestsList(files);
-        startAllTests(testsList);
+        startAllTestsSync(testsList, function() {
+          startAllTests(testsList);
+        });
       });
     } else {
       var testsList = prepareTestsList([process.argv[2], process.argv[3], process.argv[4]]);
-      startAllTests(testsList);
+      startAllTestsSync(testsList, function() {
+        startAllTests(testsList);
+      });
     }
   });
 });
@@ -113,6 +117,40 @@ function startAllTests(testsList) {
         }
       });
   });
+}
+
+function startAllTestsSync(testsList, fn) {
+  var tests = [];
+  testsList.forEach(function (data) {
+    tests.push(data);
+  });
+  (function next() {
+    if(tests.length==0) return fn();
+    var data = tests.shift();
+    var name = data.name;
+    var js   = fs.readFileSync(path.join(mu.root, name + '.js')).toString(),
+        text = fs.readFileSync(path.join(mu.root, name + '.txt')).toString();
+    name += "Sync";
+    
+    console.log("Testing sync: " + name+ " from "+data.tplName);
+    js = eval('(' + js + ')');
+    
+    testing[name] = true;
+
+    mu.compile(data.tplName, function(err, parsed) {
+      var buffer = mu.renderSync(parsed, js);
+      if(buffer!==text) {
+        console.log(name+'\033[31m[failed]\033[37m'+JSON.stringify(buffer)+'!=='+JSON.stringify(text));
+      } else if(testing[name]) {
+        delete(testing[name]);
+        console.log(name + ' \033[32m[passed]\033[37m');
+      } else {
+        testing[name] = false;
+        console.log(name + '\033[31m[twice end]\033[37m');
+      }
+      next();
+    });
+  })();
 }
 
 process.on('exit', function() {
